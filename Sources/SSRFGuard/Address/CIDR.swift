@@ -60,12 +60,14 @@ extension CIDR {
 
   private static func maskedV6(_ bytes: [UInt8], _ prefixLength: Int) -> [UInt8] {
     var masked = [UInt8](repeating: 0, count: 16)
+
     let fullBytes = prefixLength / 8
     let remainderBits = prefixLength % 8
 
     for index in 0..<fullBytes {
       masked[index] = bytes[index]
     }
+
     if remainderBits > 0, fullBytes < 16 {
       masked[fullBytes] = bytes[fullBytes] & (~UInt8(0) << (8 - remainderBits))
     }

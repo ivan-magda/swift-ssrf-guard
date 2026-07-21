@@ -39,6 +39,7 @@ public struct EgressClassifier: Sendable {
     for range in policy.blockedRanges where range.contains(canonical) {
       return .blocked(.matchedRange(range))
     }
+
     return .allowed
   }
 
@@ -56,16 +57,25 @@ extension EgressClassifier {
   /// forms. `bytes` must be sixteen elements — the caller checks first.
   private static func embeddedIPv4(_ bytes: [UInt8]) -> UInt32? {
     let isMapped =
-      bytes[0...9].allSatisfy { byte in byte == 0 } && bytes[10] == 0xFF && bytes[11] == 0xFF
+      bytes[0...9].allSatisfy { $0 == 0 }
+      && bytes[10] == 0xFF
+      && bytes[11] == 0xFF
+
     let isNAT64 =
-      bytes[0] == 0x00 && bytes[1] == 0x64 && bytes[2] == 0xFF && bytes[3] == 0x9B
-      && bytes[4...11].allSatisfy { byte in byte == 0 }
-    let isCompatible = bytes[0...11].allSatisfy { byte in byte == 0 }
+      bytes[0] == 0x00
+      && bytes[1] == 0x64
+      && bytes[2] == 0xFF
+      && bytes[3] == 0x9B
+      && bytes[4...11].allSatisfy { $0 == 0 }
+
+    let isCompatible = bytes[0...11].allSatisfy { $0 == 0 }
+
     guard isMapped || isNAT64 || isCompatible else {
       return nil
     }
 
     return (UInt32(bytes[12]) << 24) | (UInt32(bytes[13]) << 16)
-      | (UInt32(bytes[14]) << 8) | UInt32(bytes[15])
+      | (UInt32(bytes[14]) << 8)
+      | UInt32(bytes[15])
   }
 }
