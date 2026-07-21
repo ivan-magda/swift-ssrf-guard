@@ -41,7 +41,7 @@ extension EgressPolicy {
     "fe80::/10",  // link-local
     "fc00::/7",  // unique local (ULA)
     "ff00::/8",  // multicast
-    "2001:db8::/32",  // documentation
+    "2001:db8::/32"  // documentation
   ].map(EgressPolicy.parseOrTrap)
 
   private static func parseOrTrap(_ text: String) -> CIDR {
