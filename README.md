@@ -1,9 +1,8 @@
 # SSRFGuard
 
 [![CI](https://github.com/ivan-magda/swift-ssrf-guard/actions/workflows/swift.yml/badge.svg)](https://github.com/ivan-magda/swift-ssrf-guard/actions/workflows/swift.yml)
-[![Swift 6.0](https://img.shields.io/badge/Swift-6.0-orange.svg)](https://swift.org)
-[![Platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS%20%7C%20visionOS%20%7C%20Linux-blue.svg)](https://swift.org)
-[![SPM Compatible](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)](https://swift.org/package-manager)
+[![Swift versions](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fivan-magda%2Fswift-ssrf-guard%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/ivan-magda/swift-ssrf-guard)
+[![Platforms](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fivan-magda%2Fswift-ssrf-guard%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/ivan-magda/swift-ssrf-guard)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Classify whether an IP address is a safe outbound target or one that points back into a private
